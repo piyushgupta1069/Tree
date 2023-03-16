@@ -1,0 +1,22 @@
+queue<Node*>q;
+      q.push(root);
+      vector<int>res;
+      while(!q.empty())
+      {
+          int len = q.size();
+          vector<int>temp;
+          for(int i=0;i<len;i++)
+          {
+              Node* noode = q.front();
+              q.pop();
+              temp.push_back(noode->data);
+              if(noode->left)q.push(noode->left);
+              if(noode->right)q.push(noode->right);
+          }
+          reverse(temp.begin(),temp.end());
+          for(int i=0;i<temp.size();i++){
+              res.push_back(temp[i]);
+          }
+      }
+      reverse(res.begin(),res.end());
+      return res;
